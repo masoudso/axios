@@ -3,12 +3,14 @@ import ReactDOM from 'react-dom'
 import './App.css';
 import UserInput from './UserInput/UserInput';
 import UserOutput from './UserOutput/UserOutput';
+import axios from './axios-user'
 
 //The class is by default created
 class App extends Component {
 
   state = {
-    userName : 'Masoud Soltanveis'
+    userName : 'Masoud Soltanveis',
+    response : null
   }
 
   manipulator = (event) => {
@@ -18,14 +20,28 @@ class App extends Component {
     )
   }
 
+  callAPI = (props) => {
+    axios.get()
+    .then(response => {
+      this.setState({response : response.data})  
+      //  console.log(response);
+    })
+  }
 
   render() {
+    let response = <p> Here comes the response! </p>
     const myMainContainer = {maxWidth:'400px', height:'300px', margin:'10px auto', padding:'10px 0',
             backgroundColor:'#3b5998', color:'white' ,textAlign:'center', border:'1px solid #000'};
+            if (this.state.response) {
+              response = (
+              <p>{this.state.response.body}</p>
+              )
+       }
     return (
       <div className="App" style = {myMainContainer}>
         <UserOutput userName = {this.state.userName}/>
-        <UserInput changed={this.manipulator}/>
+        <UserInput changed={this.manipulator} callAPI={this.callAPI}/>
+        <div>{response}</div>
       </div>
     );
   }

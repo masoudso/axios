@@ -1,5 +1,6 @@
 import React, { Component, Fragment} from 'react';
 
+
 const userInput = (props) => {
     const style = {
         backgroundColor : 'lightgrey',
@@ -16,6 +17,7 @@ const userInput = (props) => {
         <br></br>
         <input type="submit" value="Search" />
       </form>
+      <input type="submit" value="Call API" onClick={props.callAPI} />
       </Fragment>
         </div>
     )
