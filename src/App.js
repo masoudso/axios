@@ -34,7 +34,7 @@ class App extends Component {
             backgroundColor:'#3b5998', color:'white' ,textAlign:'center', border:'1px solid #000'};
             if (this.state.response) {
               response = (
-              <p>{this.state.response.body}</p>
+              <p>{this.state.response.people}</p>
               )
        }
     return (
