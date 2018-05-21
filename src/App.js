@@ -20,13 +20,26 @@ class App extends Component {
     )
   }
 
+  // callAPI = (props) => {
+  //   axios.get()
+  //   .then(response => {
+  //     this.setState({response : response.data})  
+  //     //  console.log(response);
+  //   })
+  // }
   callAPI = (props) => {
-    axios.get()
-    .then(response => {
-      this.setState({response : response.data})  
-      //  console.log(response);
-    })
-  }
+    //alert("Let's proceed!");
+    const body = {
+      credentials : { 
+        firstname : 'Masoud',
+        lastname : 'Soltanveis',
+        email: 'masoudso@vays.com'
+        }
+    }
+    axios.post('/body.json', body)
+        .then(response => console.log(response))
+                .catch(error => console.log(error));
+}
 
   render() {
     let response = <p> Here comes the response! </p>
